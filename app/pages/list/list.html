@@ -2,7 +2,25 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>{{searchItem}}</ion-title>
+  <ion-title>Search Result</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let defaulter of defaulters">      
+      {{defaulter.name}}      
+    </button>
+  </ion-list>
+  <div *ngIf="defaulters.length==0" padding>
+    No outstanding debts found.
+  </div>  
+</ion-content>
+
+<!-- <ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>My First List</ion-title>
 </ion-navbar>
 
 <ion-content>
@@ -18,4 +36,4 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
-</ion-content>
+</ion-content> -->

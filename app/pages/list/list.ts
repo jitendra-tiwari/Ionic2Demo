@@ -7,30 +7,33 @@ import { DefaulterService } from '../../services/defaulter.service';
   providers:[DefaulterService]
 })
 export class ListPage {  
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  // selectedItem: any;
+  // icons: string[];
+  // items: Array<{title: string, note: string, icon: string}>;
   searchItem: string;
+  defaulters: Array<{ name: string }>;
 
   constructor(private nav: NavController, navParams: NavParams, service: DefaulterService) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+
     this.searchItem = navParams.get('search');
 
-    service.getDefaulters(this.searchItem).then(d => this.searchItem = d.message);
+    this.defaulters = service.getDefaulters(this.searchItem);        
+    //.then(result => (result.status != 'Fail') ? this.defaulters = result : this.defaulters = []);
+    
+    // If we navigated to this page, we will have an item available as a nav param
+    // this.selectedItem = navParams.get('item');
 
+    // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
+    // 'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 15; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    // this.items = [];
+    // for(let i = 1; i < 15; i++) {
+    //   this.items.push({
+    //     title: 'Item ' + i,
+    //     note: 'This is item #' + i,
+    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    //   });
+    // }
   }
 
   itemTapped(event, item) {
