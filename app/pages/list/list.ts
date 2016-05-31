@@ -17,10 +17,10 @@ export class ListPage {
 
     this.searchItem = navParams.get('search');
 
-    this.defaulters = service.getDefaulters(this.searchItem); 
+    // this.defaulters = service.getDefaulters(this.searchItem); 
 
-    //service.getDefaulters(this.searchItem)
-    //.then(result => (result.status != 'Fail') ? this.defaulters = result : this.defaulters = []);
+    service.getDefaulters(this.searchItem)
+    .then(result => (result.status != 'Fail') ? this.defaulters = result : this.defaulters = []);
     
     // If we navigated to this page, we will have an item available as a nav param
     // this.selectedItem = navParams.get('item');

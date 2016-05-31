@@ -16,12 +16,12 @@ export class DefaulterService {
 
 	getDefaulters(search:string) {
 		
-		// this.endpoint_url = this.endpoint_url + "?search=" + search;
-		// return this.http.get(this.endpoint_url).toPromise().then(res => res.json(), err => console.log(err));
+		this.endpoint_url = this.endpoint_url + "?search=" + search;
+		return this.http.get(this.endpoint_url).toPromise().then(res => res.json(), err => console.log(err));
 		
-		for (var i = 0; i <= 10; i++) {
-			this.defaulters.push({ name: "Defaulter " + i });
-		}		
-		return this.defaulters;
+		// for (var i = 0; i <= 10; i++) {
+		// 	this.defaulters.push({ name: "Defaulter " + i });
+		// }		
+		// return this.defaulters;
 	}
 }
